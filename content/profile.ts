@@ -25,7 +25,7 @@ export const profile = {
   // Phone intentionally left off the site (it is still in the downloadable PDF).
   links: {
     linkedin: "https://www.linkedin.com/in/ananthsm2",
-    github: "TODO: GitHub profile URL",
+    github: "https://github.com/anant12343",
   },
 
   // Set NEXT_PUBLIC_SITE_URL once you have a domain. On Vercel the production URL is picked up automatically.
