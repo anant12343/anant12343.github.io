@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+scripts/make-mockups/.cache
+*.tsbuildinfo
+.env*.local
+.vercel
