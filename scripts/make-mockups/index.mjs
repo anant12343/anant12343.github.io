@@ -72,8 +72,38 @@ const CROP_SPEC = {
   "breathe-model": ["breatheride__3d-model.png", { left: 222, top: 248, width: 1058, height: 580 }],
 };
 
+// Poster PDF (assets/raw/pocket-scholar__poster.pdf) → PNG at 150 dpi (1241×1755), plus section crops.
+const POSTER_CROPS = {
+  "poster-full": null,
+  "poster-pillars": { left: 55, top: 560, width: 1132, height: 420 },
+  "poster-role": { left: 55, top: 1000, width: 1132, height: 375 },
+  "poster-roadmap": { left: 55, top: 1375, width: 1132, height: 275 },
+};
+async function makePosterCrops(out) {
+  const pdf = path.join(RAW, "pocket-scholar__poster.pdf");
+  if (!fs.existsSync(pdf)) return;
+  const { execFileSync } = await import("node:child_process");
+  const base = path.join(CROPS, "poster");
+  try {
+    execFileSync("pdftoppm", ["-r", "150", "-png", "-singlefile", pdf, base]);
+  } catch {
+    console.warn("  ! pdftoppm (poppler) not found: poster skipped");
+    return;
+  }
+  fs.mkdirSync(path.join(ROOT, "public/files"), { recursive: true });
+  fs.copyFileSync(pdf, path.join(ROOT, "public/files/pocket-scholar-poster.pdf"));
+  const meta = await sharp(`${base}.png`).metadata();
+  for (const [key, region] of Object.entries(POSTER_CROPS)) {
+    const dest = path.join(CROPS, `${key}.png`);
+    if (region) await sharp(`${base}.png`).extract(region).png().toFile(dest);
+    else fs.copyFileSync(`${base}.png`, dest);
+    out[key] = { src: dest, w: region ? region.width : meta.width, h: region ? region.height : meta.height };
+  }
+}
+
 async function makeCrops() {
   const out = {};
+  await makePosterCrops(out);
   for (const [key, [file, region]] of Object.entries(CROP_SPEC)) {
     const src = path.join(RAW, file);
     if (!fs.existsSync(src)) continue;
@@ -371,7 +401,18 @@ const desk = (contents, bg = "paper", label = "", fig = "") =>
 function buildScenes(crops) {
   const A = (f) => path.join(ART, f);
   return {
-    "pocket-scholar": {
+    "pocket-scholar": crops["poster-full"] ? {
+      cover: S(`<div style="display:flex;align-items:center;gap:90px;margin-left:-40px">
+          <div style="max-width:600px"><div class="mono" style="color:${C.accent};font-size:16px;margin-bottom:26px">Pocket Scholar · Co-founder & CPO</div>
+          <div class="disp" style="font-size:120px;color:${C.paper}">Learn it.<br>Build it.<br><span style="color:${C.accent}">Ship it.</span></div></div>
+          <div class="sheet shadow" style="transform:rotate(-4deg) perspective(2000px) rotateY(-10deg);overflow:hidden">${screenBox(shot(crops["poster-full"]), 560)}</div></div>`, "ink", "Pocket Scholar", "Cover"),
+      gallery: [
+        S(`<div class="sheet shadow" style="overflow:hidden">${screenBox(shot(crops["poster-full"]), 650)}</div>`, "paper", "Pocket Scholar", "Fig. 01 · A4 poster"),
+        S(`<div class="sheet shadow" style="overflow:hidden;border-radius:14px">${screenBox(shot(crops["poster-pillars"]), 1360)}</div>`, "ink", "Pocket Scholar", "Fig. 02"),
+        S(`<div class="sheet shadow" style="overflow:hidden;border-radius:14px">${screenBox(shot(crops["poster-role"]), 1360)}</div>`, "paper", "Pocket Scholar", "Fig. 03"),
+        S(`<div class="sheet shadow" style="overflow:hidden;border-radius:14px">${screenBox(shot(crops["poster-roadmap"]), 1360)}</div>`, "accent", "Pocket Scholar", "Fig. 04"),
+      ],
+    } : {
       cover: S(`<div class="tilt">${laptop(slides.title({ kicker: "EdTech · Co-founder & CPO", title: "Pocket<br>Scholar", sub: "Skill modules, live industry projects and Edu Kits for Indian college students.", chips: ["Product", "Roadmap", "6-member team"] }), 1240)}</div>`, "ink", "Pocket Scholar", "Cover"),
       gallery: [
         S(`<div>${browser(slides.pillars({ kicker: "The offer", title: "Three ways in.", items: [{ h: "Skill modules", p: "" }, { h: "Live industry projects", p: "" }, { h: "Edu Kits", p: "" }] }), 1300, { title: "Pocket Scholar · offer" })}</div>`, "paper", "Pocket Scholar", "Fig. 01"),
@@ -465,6 +506,26 @@ function buildScenes(crops) {
         S(`<div style="display:flex;gap:70px;align-items:center">${browser(shot(crops["nomercy-panel"]), 640, { dark: true })}<div style="max-width:560px"><div class="mono" style="color:${C.ink};margin-bottom:18px;opacity:.7">Game setup</div><div class="disp" style="font-size:96px">2–6 players. Three AI levels.</div></div></div>`, "accent", "No Mercy", "Fig. 02"),
       ],
     },
+  };
+}
+
+/**
+ * Finished covers you designed yourself: assets/covers/<slug>.(webp|png|jpg), 16:10.
+ * Used as cover.webp unchanged (just resized to 1600×1000); the gallery gets a tilted-laptop
+ * mockup and a "printed slide on a desk" mockup made from it.
+ */
+async function providedScenes(slug, title) {
+  const file = ["webp", "png", "jpg", "jpeg"].map((e) => path.join(ROOT, "assets/covers", `${slug}.${e}`)).find(fs.existsSync);
+  if (!file) return null;
+  const png = path.join(CROPS, `provided-${slug}.png`);
+  await sharp(file).resize(1600, 1000, { fit: "cover" }).png().toFile(png);
+  const art = { src: png, w: 1600, h: 1000 };
+  return {
+    coverFile: file,
+    gallery: [
+      S(`<div class="tilt">${laptop(shot(art), 1240)}</div>`, "paper", title, "Fig. 01"),
+      S(`<div class="sheet shadow" style="transform:rotate(-3deg);overflow:hidden;border-radius:6px">${screenBox(shot(art), 1240)}</div>`, "ink", title, "Fig. 02"),
+    ],
   };
 }
 
@@ -567,7 +628,7 @@ async function main() {
   }
 
   for (const p of projects) {
-    let sc = scenes[p.slug];
+    let sc = (await providedScenes(p.slug, p.title)) || scenes[p.slug];
     if (!sc) {
       const auto = autoScenes(p.slug, p.title);
       if (auto) sc = await auto;
@@ -579,7 +640,9 @@ async function main() {
     const dir = path.join(OUT, p.slug);
     fs.rmSync(dir, { recursive: true, force: true });
     const files = [];
-    await render(page, sc.cover, 1600, 1000, path.join(dir, "cover.webp"));
+    fs.mkdirSync(dir, { recursive: true });
+    if (sc.coverFile) await sharp(sc.coverFile).resize(1600, 1000, { fit: "cover" }).webp({ quality: 88 }).toFile(path.join(dir, "cover.webp"));
+    else await render(page, sc.cover, 1600, 1000, path.join(dir, "cover.webp"));
     files.push(`/images/projects/${p.slug}/cover.webp`);
     // Smaller cover for grid cards (cover-800.webp)
     await sharp(path.join(dir, "cover.webp")).resize({ width: 800 }).webp({ quality: 80 }).toFile(path.join(dir, "cover-800.webp"));

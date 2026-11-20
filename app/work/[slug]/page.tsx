@@ -96,6 +96,26 @@ export default async function CaseStudy({ params }: Props) {
         </div>
         <h1 className="display mt-6 max-w-6xl text-[clamp(2.8rem,9vw,8.5rem)]">{p.title}</h1>
         <p className="mt-6 max-w-3xl text-xl leading-snug text-muted sm:text-2xl">{p.tagline}</p>
+        {p.links && p.links.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {p.links.map((l) => {
+              const external = l.href.startsWith("http");
+              const href = external ? l.href : asset(l.href);
+              const isFile = /\.(pdf|zip)$/i.test(l.href);
+              return (
+                <a
+                  key={l.href}
+                  href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(isFile ? { download: "" } : {})}
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 font-medium text-ink transition-transform hover:-translate-y-0.5"
+                >
+                  {l.label} <span aria-hidden>{isFile ? "↓" : "↗"}</span>
+                </a>
+              );
+            })}
+          </div>
+        )}
       </header>
 
       {/* Hero mockup */}

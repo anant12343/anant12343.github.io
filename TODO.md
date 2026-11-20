@@ -4,7 +4,7 @@ Everything below is marked `TODO` in `content/*.ts`. In `npm run dev` each one s
 
 ## Decisions (I used a default; confirm or change)
 - [ ] **Public email**: using the BIMTECH address from the resume. Swap for a personal one? (`content/profile.ts`)
-- [ ] **GitHub URL**: hidden until you add one (`profile.links.github`)
+- [x] **GitHub URL**: set to github.com/anant12343
 - [ ] **Site URL**: set `NEXT_PUBLIC_SITE_URL` once you have a domain (Vercel's URL is used automatically until then)
 - [ ] **"DealerDesk" vs "BayBoard"**: your screenshot says BayBoard, so the site uses BayBoard
 - [ ] **AI Lead-Routing**: the resume says "a stationery supplier"; I used your brief's "OfficeHub" and "CRM course". OK to publish?
@@ -14,10 +14,11 @@ Everything below is marked `TODO` in `content/*.ts`. In `npm run dev` each one s
 
 ## Featured projects
 **Pocket Scholar**
-- [ ] Problem statement (what gap students face)
-- [ ] What exists today (pilot / MVP / first cohort) + screenshots → `assets/raw/pocket-scholar__*.png`
+- [ ] Problem statement (what gap students face). The poster says what it is, not why.
+- [ ] Link + screenshot of the web landing page → `assets/raw/pocket-scholar__landing.png`
 - [ ] Any honest traction numbers
-- [ ] Tools used; month range and whether it's ongoing (`experience.ts`)
+- [ ] Month range and whether it's ongoing (`experience.ts`)
+- [x] Pillars, role, go-to-market roadmap, tools: filled from the A4 poster
 
 **BayBoard (Parking MVP)**
 - [ ] Month/year
@@ -36,11 +37,11 @@ Everything below is marked `TODO` in `content/*.ts`. In `npm run dev` each one s
 ## Other projects
 - [ ] **MDAE live project**: your role; what decision it supported; what "win rate" measures (the resume says consolidation "improved win rates by 78%")
 - [ ] **Prime Video EDA**: date, question, findings, which BI tool + dashboard screenshot
-- [ ] **Asian Paints IMC**: course, date, role, brief, field study details, the plan, outcome (not on resume)
-- [ ] **Hermes' Dialogue 7.0**: date, team, framing, recommendations
+- [ ] **Asian Paints IMC**: course name, date, your part, key recommendations (structure + field-study audience now filled from your cover)
+- [ ] **Hermes' Dialogue 7.0**: date, team, your part, what Option A and Option B were
 - [ ] **Green-infra research (Prakritik Sukoon)**: your role, what the company did with it
-- [ ] **Third Wave Coffee**: course, date, role, observations, strategy, outcome (not on resume)
-- [ ] **Markstrat**: date, role, MOST/MOVE decisions, final result
+- [ ] **Third Wave Coffee**: course name, date, your part, key recommendations (channels + 31/35 audit now filled from your cover)
+- [ ] **Markstrat**: date, your role in Team M, final position after round 10 (17th → 2nd over Rounds 1–4 is filled)
 - [ ] **Quantum chemistry simulator**: what it simulates, method, libraries, repo link, a real output image
 - [ ] **BreatheRide / Tokamak / No Mercy**: dates, tools used, outcome or learning
 
