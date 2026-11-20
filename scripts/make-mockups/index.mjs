@@ -92,6 +92,9 @@ async function makePosterCrops(out) {
   }
   fs.mkdirSync(path.join(ROOT, "public/files"), { recursive: true });
   fs.copyFileSync(pdf, path.join(ROOT, "public/files/pocket-scholar-poster.pdf"));
+  // Flat poster for the home-page showcase (portrait, A4 ratio)
+  fs.mkdirSync(path.join(OUT, "pocket-scholar"), { recursive: true });
+  await sharp(`${base}.png`).resize({ width: 1000 }).webp({ quality: 86 }).toFile(path.join(OUT, "pocket-scholar", "poster.webp"));
   const meta = await sharp(`${base}.png`).metadata();
   for (const [key, region] of Object.entries(POSTER_CROPS)) {
     const dest = path.join(CROPS, `${key}.png`);
@@ -638,7 +641,7 @@ async function main() {
       continue;
     }
     const dir = path.join(OUT, p.slug);
-    fs.rmSync(dir, { recursive: true, force: true });
+    for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) if (f !== "poster.webp") fs.rmSync(path.join(dir, f), { force: true });
     const files = [];
     fs.mkdirSync(dir, { recursive: true });
     if (sc.coverFile) await sharp(sc.coverFile).resize(1600, 1000, { fit: "cover" }).webp({ quality: 88 }).toFile(path.join(dir, "cover.webp"));

@@ -35,6 +35,10 @@ export interface Project {
   cover: ImageRef;
   gallery: ImageRef[];
   og: string;
+  /** Show this project's cover in the home-page "Covers & posters" showcase. */
+  showcase?: boolean;
+  /** A portrait poster (shown large in the showcase). */
+  poster?: ImageRef;
   links?: { label: string; href: string }[];
   /** Where each fact came from, for your own checking. Not rendered. */
   sources?: string[];
