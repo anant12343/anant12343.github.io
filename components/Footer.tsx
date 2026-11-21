@@ -24,7 +24,6 @@ export default function Footer() {
               </a>
             </li>
           ))}
-          <li className="label mt-2 text-muted">Built with Claude Code · Next.js · Framer Motion</li>
         </ul>
       </div>
     </footer>
