@@ -3,7 +3,6 @@ import Bento from "@/components/Bento";
 import SectionHeader from "@/components/SectionHeader";
 import Reveal from "@/components/Reveal";
 import WorkGrid from "@/components/WorkGrid";
-import Showcase from "@/components/Showcase";
 import { FeaturedCard } from "@/components/ProjectCard";
 import { featuredProjects, projects, toCard } from "@/content/projects";
 import { experience } from "@/content/experience";
@@ -14,9 +13,6 @@ const wrap = "mx-auto max-w-site px-4 sm:px-6 lg:px-10";
 
 // Card dates: hide unknown ("TODO") dates everywhere, including dev.
 const cardDate = (d: string) => (isTodo(d) ? null : txt(d));
-
-const posterProject = projects.find((p) => p.poster);
-const showcaseProjects = projects.filter((p) => p.showcase);
 
 export default function Home() {
   const jsonLd = {
@@ -45,16 +41,6 @@ export default function Home() {
           ))}
         </div>
 
-      </section>
-
-      {/* ── Covers & posters (shown in full, no click needed) ───── */}
-      <section id="covers" aria-labelledby="covers-h" className={`${wrap} scroll-mt-20 pt-28 sm:pt-40`}>
-        <SectionHeader index="02" id="covers-h" title="Covers & posters" note="Decks and print I designed, shown in full. Click any for the case study." />
-        <Showcase
-          poster={posterProject?.poster ? { slug: posterProject.slug, title: posterProject.title, category: posterProject.category, image: posterProject.poster } : undefined}
-          covers={showcaseProjects.map((p) => ({ slug: p.slug, title: p.title, category: p.category, image: p.cover }))}
-        />
-
         <div className="mt-24 sm:mt-32">
           <div className="mb-6 flex items-end justify-between gap-4">
             <h3 className="display text-[clamp(2rem,5vw,3.5rem)]">The full index</h3>
@@ -66,7 +52,7 @@ export default function Home() {
 
       {/* ── Experience ──────────────────────────────────────────── */}
       <section id="experience" aria-labelledby="exp-h" className={`${wrap} scroll-mt-20 pt-28 sm:pt-40`}>
-        <SectionHeader index="03" id="exp-h" title="Experience" note="Startups, EdTech sales, policy research, content." />
+        <SectionHeader index="02" id="exp-h" title="Experience" note="Startups, EdTech sales, policy research, content." />
         <ol className="relative">
           {experience.map((e, i) => (
             <li key={e.org + e.role} className="group grid gap-4 border-t border-line py-8 md:grid-cols-[14rem_1fr_auto] md:gap-10 sm:py-10">
@@ -94,7 +80,7 @@ export default function Home() {
 
       {/* ── Skills ──────────────────────────────────────────────── */}
       <section id="skills" aria-labelledby="skills-h" className={`${wrap} scroll-mt-20 pt-28 sm:pt-40`}>
-        <SectionHeader index="04" id="skills-h" title="Toolkit" note="What I reach for, grouped the way I use it." />
+        <SectionHeader index="03" id="skills-h" title="Toolkit" note="What I reach for, grouped the way I use it." />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {Object.entries(skills).map(([group, items], i) => (
             <Reveal key={group} delay={i * 0.06} className="tile p-6">
@@ -119,7 +105,7 @@ export default function Home() {
 
       {/* ── Education ───────────────────────────────────────────── */}
       <section id="education" aria-labelledby="edu-h" className={`${wrap} scroll-mt-20 pt-28 sm:pt-40`}>
-        <SectionHeader index="05" id="edu-h" title="Education" note="Mechanical engineering → data science → marketing." />
+        <SectionHeader index="04" id="edu-h" title="Education" note="Mechanical engineering → data science → marketing." />
         <div className="grid gap-4 md:grid-cols-3">
           {education.map((e, i) => (
             <Reveal key={e.qualification} delay={i * 0.08} className={`tile flex min-h-[16rem] flex-col justify-between p-6 ${i === 0 ? "!bg-fg text-bg !border-fg" : ""}`}>
@@ -146,7 +132,7 @@ export default function Home() {
       <section id="contact" aria-labelledby="contact-h" className={`${wrap} scroll-mt-20 py-28 sm:py-40`}>
         <Reveal>
           <div className="tile overflow-hidden !rounded-[2rem] !border-transparent !bg-accent p-6 text-ink sm:p-10 lg:p-14">
-            <p className="label">(06) · Open to roles, graduating 2027</p>
+            <p className="label">(05) · Open to roles, graduating 2027</p>
             <h2 id="contact-h" className="display mt-8 text-[clamp(3rem,11vw,10rem)]">
               Let&rsquo;s build<br />something.
             </h2>

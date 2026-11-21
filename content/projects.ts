@@ -36,7 +36,6 @@ export const projects: Project[] = [
       "Three pillars, one learning path. Learn: skill modules, bite-sized lessons in tech, design, finance and business. Build: live projects, real briefs from industry partners, reviewed by mentors. Ship: Edu Kits, physical and digital kits for hands-on, guided projects.",
       "A four-phase go-to-market roadmap. Phase 1, campus pilot: top colleges, campus ambassadors, Edu Kits in stores. Phase 2, digital growth: build challenges, reels and referral rewards. Phase 3, industry ties: live briefs from startups and MNCs. Phase 4, nationwide scale: app launch, vernacular content, Tier 2–3 cities.",
       "The web landing page. (TODO: add the link and a screenshot as assets/raw/pocket-scholar__landing.png)",
-      "An A4 product poster summarising the platform, my role and the roadmap (download below).",
     ],
     outcome: [
       "Won stakeholder buy-in on build priorities.",
@@ -56,11 +55,6 @@ export const projects: Project[] = [
       ["Poster section: go-to-market roadmap in four phases: campus pilot, digital growth, industry ties, nationwide scale.", "Go-to-market roadmap"],
     ]),
     og: og("pocket-scholar"),
-    links: [{ label: "Download the A4 poster (PDF)", href: "/files/pocket-scholar-poster.pdf" }],
-    poster: {
-      src: "/images/projects/pocket-scholar/poster.webp",
-      alt: "Pocket Scholar A4 poster: the tagline Learn it. Build it. Ship it., three pillars (skill modules, live projects, Edu Kits), my role as co-founder and CPO in five steps, and a four-phase go-to-market roadmap.",
-    },
     sources: ["resume: Work Experience › Pocket Scholar", "poster: assets/raw/pocket-scholar__poster.pdf"],
   },
   {
@@ -253,7 +247,6 @@ export const projects: Project[] = [
       ["The Asian Paints IMC cover printed as a slide on a dark desk.", "In print"],
     ]),
     og: og("asian-paints-imc"),
-    showcase: true,
     sources: ["provided cover: assets/covers/asian-paints-imc.webp"],
   },
   {
@@ -279,7 +272,6 @@ export const projects: Project[] = [
       ["The CBAM case cover printed as a slide on a dark desk.", "In print"],
     ]),
     og: og("hermes-cbam"),
-    showcase: true,
     sources: ["resume: Achievements", "provided cover: assets/covers/hermes-cbam.webp"],
   },
   {
@@ -307,7 +299,6 @@ export const projects: Project[] = [
       ["The green-infrastructure research cover printed as a slide on a dark desk.", "In print"],
     ]),
     og: og("prakritik-sukoon"),
-    showcase: true,
     sources: ["resume: Academic Projects › Prakritik Sukoon Sampoorna", "provided cover: assets/covers/prakritik-sukoon.webp"],
   },
   {
@@ -333,7 +324,6 @@ export const projects: Project[] = [
       ["The Third Wave Coffee strategy cover printed as a slide on a dark desk.", "In print"],
     ]),
     og: og("third-wave-coffee"),
-    showcase: true,
     sources: ["provided cover: assets/covers/third-wave-coffee.webp"],
   },
   {
@@ -365,7 +355,6 @@ export const projects: Project[] = [
       ["The Markstrat cover printed as a slide on a dark desk.", "In print"],
     ]),
     og: og("markstrat"),
-    showcase: true,
     sources: ["resume: Academic Projects › Business Simulations", "provided cover: assets/covers/markstrat.webp"],
   },
 
