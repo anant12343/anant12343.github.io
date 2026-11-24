@@ -12,7 +12,7 @@ export const profile = {
   focus: ["Product", "Growth", "Analytics", "No-code AI automation"],
   location: "Greater Noida, India",
   timezone: "Asia/Kolkata",
-  openTo: "Bengaluru / Pune · willing to travel",
+  openTo: "Open to working anywhere in India, with Bengaluru, Pune and Hyderabad preferred",
   status: {
     label: "Open to roles",
     detail: "Graduating 2027",
