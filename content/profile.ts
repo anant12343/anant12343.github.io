@@ -1,5 +1,5 @@
 // Everything about you that is not a project or a job.
-// Source of truth: resume.pdf (Ananth_Madabhushini_CV_BIMTECH_Infosys_BPM_Digital_Delivery_v3).
+// Source of truth: resume.pdf (25DM031_Ananth_Madabhushini_LJI_PreSales_BIMTECH).
 import type { EducationItem } from "./types";
 
 export const profile = {
@@ -35,63 +35,76 @@ export const profile = {
 
   languages: ["English", "Hindi", "Telugu"],
   hobbies: [
-    "Rugby (flanker / winger)",
-    "MMA & functional fitness",
-    "F1 aerodynamics",
-    "Learning languages",
-    "Geopolitics & history",
+    "History",
+    "Gaming & retro games",
+    "Quizzing",
+    "Board games",
+    "Manga",
+    "Science fiction",
+    "Amateur astronomy",
+    "Rugby",
   ],
   learning: "Industrial design",
 };
 
-// Stack tile on the hero + Skills section. Grouped as on the resume.
+// Skills section. Grouped as on the resume (LJI Pre-Sales version).
 export const skills = {
+  "Pre-Sales": [
+    "Client discovery",
+    "Requirement analysis",
+    "Solution design",
+    "Value proposition",
+    "Product demos",
+    "Proof of concept (POC)",
+    "Technical presentations",
+  ],
+  Functional: [
+    "Consultative selling",
+    "Lead qualification",
+    "Objection handling",
+    "Business case",
+    "GTM strategy",
+    "Competitive analysis",
+    "Market research",
+    "Stakeholder management",
+    "Customer retention & CLV",
+    "Customer experience (CX)",
+  ],
   Technical: [
-    "Python",
+    "Make.com",
+    "Google Gemini",
+    "Python (pandas, scikit-learn)",
     "SQL / MySQL",
     "Tableau",
     "Power BI",
     "Advanced Excel",
-    "Make.com",
-    "Google Gemini",
-    "C++",
+    "PowerPoint & Word",
+    "AWS",
     "Java",
+    "C++",
   ],
-  CRM: ["HubSpot", "Salesforce", "Zoho CRM"],
-  Functional: [
-    "Process study & assessment",
-    "Requirements documentation",
-    "Solution conceptualisation",
-    "ROI analysis",
-    "Stakeholder management",
-    "Market research",
-  ],
-  Coursework: [
-    "Lean Six Sigma",
-    "Robotic Process Automation",
-    "AI & Machine Learning",
-    "Business Process Improvement",
-    "Operations & Process Management",
-    "Digital Transformation",
-  ],
+  CRM: ["Salesforce", "HubSpot", "Zoho CRM"],
 };
 
 /** Short list shown on the hero "stack" tile. */
 export const heroStack = ["Python", "SQL", "Tableau", "Power BI", "Make.com", "Gemini", "HubSpot", "Salesforce"];
 
 export const certifications = [
-  "Google Data Analytics",
-  "BCG Data Science (Forage)",
-  "IBM Generative AI",
-  "AWS",
-  "HubSpot",
   "Salesforce CRM",
-  "Design Boat UI/UX",
+  "HubSpot CRM",
+  "AWS (Udemy)",
+  "Python (Udemy)",
+  "Google Data Analytics (Coursera)",
+  "BCG Data Science Job Simulation (Forage)",
+  "Bloomberg Market Concepts",
+  "MS Excel: Beginner to Expert",
 ];
 
 export const achievements = [
-  "National Delegate, India Leadership Residency 2026, with sessions at Parliament and NITI Aayog",
+  "Participant, India Leadership Residency 2026, with sessions at Parliament and NITI Aayog",
+  "Competitions: AIU South Zone quiz; Asian MMS at IISc",
   "Round 2, Hermes' Dialogue 7.0 (Cosmopolitan Club, BIMTECH): case study on India's response to the EU CBAM",
+  "Research: dissertation on geopolitical risk and supply-chain diversification (ongoing)",
 ];
 
 // Grades are deliberately not shown on the site (they are in the PDF).

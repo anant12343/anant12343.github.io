@@ -323,7 +323,7 @@ const slides = {
            .map((t, i) => `<div style="font-size:38px;color:${C.ink}">→</div><div style="flex:1;height:230px;border-radius:22px;padding:28px;display:flex;align-items:flex-end;background:${i === 1 ? C.accent : i === 2 ? C.ink : "#fff"};color:${i === 2 ? C.paper : C.ink};border:1.5px solid ${i === 0 ? C.ink : "transparent"};font-family:Archivo;font-weight:800;font-size:40px;line-height:1.05;letter-spacing:-.02em">${t}</div>`)
            .join("")}
        </div>
-       <div style="display:flex;gap:60px;margin-top:70px">${[["14%", "above competitor benchmarks"], ["78%", "win-rate improvement"]]
+       <div style="display:flex;gap:60px;margin-top:70px">${[["14%", "better than competitors"]]
          .map(([v, l]) => `<div style="display:flex;align-items:baseline;gap:18px"><span class="disp" style="font-size:90px;color:${C.accent}">${v}</span><span style="font-size:24px;max-width:220px">${l}</span></div>`)
          .join("")}</div></div>
        <div class="mono" style="position:absolute;bottom:40px;right:56px;color:${C.muted}">Figures as stated on resume</div>`,
@@ -444,7 +444,7 @@ function buildScenes(crops) {
     "mdae-data-science": {
       cover: S(`<div class="tilt">${laptop(slides.pipeline({ title: "Eight sources. One model." }), 1240)}</div>`, "ink", "MDAE", "Cover"),
       gallery: [
-        S(browser(slides.stats({ kicker: "MDAE live project", title: "The numbers.", stats: [{ v: "8", l: "data sources" }, { v: "6y", l: "of history in MySQL" }, { v: "14%", l: "above competitor benchmarks" }, { v: "78%", l: "win-rate improvement" }] }), 1300, { title: "Results as stated", dark: true }), "paper", "MDAE", "Fig. 01"),
+        S(browser(slides.stats({ kicker: "MDAE live project", title: "The numbers.", stats: [{ v: "8", l: "data sources" }, { v: "6y", l: "of history in MySQL" }, { v: "14%", l: "better than competitors" }] }), 1300, { title: "Results as stated", dark: true }), "paper", "MDAE", "Fig. 01"),
         S(browser(slides.dashboard({ title: "Insights & outliers", img: A("mdae.png") }), 1300, { title: "Dashboard · illustrative" }), "ink", "MDAE", "Fig. 02"),
       ],
     },

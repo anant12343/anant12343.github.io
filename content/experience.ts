@@ -4,14 +4,15 @@ import type { ExperienceItem } from "./types";
 export const experience: ExperienceItem[] = [
   {
     org: "InternzValley",
-    orgNote: "EdTech · Bengaluru",
+    orgNote: "EdTech sales · Bengaluru",
     role: "Business Development Intern",
     period: "May 2026 – Jul 2026",
     kind: "Internship",
     points: [
-      "Diagnosed low conversion in the enrolment funnel stage by stage, A/B-tested pitch variants (AIDA) and built a lead-scoring system. Demo bookings went from 2.2% to 10.3% (~4.7x).",
-      "Managed 1,100+ leads and 500+ calls through a CRM pipeline against an INR 1 lakh monthly target, closed 6 partner institutions and tracked benefits realisation in weekly MIS reports.",
-      "Turned the process into a sales playbook, coached 5 incoming interns on it and built a 30+ member campus ambassador network.",
+      "Worked 1,100+ B2B leads through 500+ calls against an INR 1 lakh/month target, and closed 6 partner deals by mapping needs and handling objections.",
+      "Built lead scoring and HubSpot triggers (CRM automation): qualification time cut ~30%, demo bookings up from 2.2% to 10.3%.",
+      "A/B-tested AIDA-based pitch variants and tracked the pipeline in Salesforce and HubSpot through weekly dashboards.",
+      "Wrote the sales playbook used to train 5 new interns, and recruited and onboarded 30+ campus ambassadors as a new outreach channel.",
     ],
   },
   {
@@ -21,16 +22,15 @@ export const experience: ExperienceItem[] = [
     period: "2025", // TODO: month range, and whether this is ongoing
     kind: "Work",
     points: [
-      "Co-founded a 6-member cross-functional EdTech venture (skill modules, live industry projects, Edu Kits). Own product strategy and roadmap.",
-      "Ran design-thinking interviews and workshops with students, colleges and partners. Requirements live as a prioritised backlog.",
-      "Pitched solution concepts to co-founders and partners and won buy-in on what the team builds first.",
+      "Co-founded a 6-member venture offering skill modules, live industry projects and Edu Kits to students, and owned the product end to end.",
+      "Ran customer discovery with students, colleges and industry partners, and turned the requirements into the roadmap, strategy and go-to-market plan.",
     ],
   },
   {
     org: "EcoChamber, BIMTECH",
     orgNote: "Economics club",
     role: "Executive Member",
-    period: "Jul 2025 – Present",
+    period: "2025 – Present",
     kind: "Leadership",
     points: [
       "Organised EcoQuest, a national inter-college economics competition for 500+ students from 25+ B-schools, delivered with zero escalations.",
@@ -44,7 +44,7 @@ export const experience: ExperienceItem[] = [
     points: [
       "Worked with senior management on AI-assisted content for social, blogs and newsletters.",
       "Built a 3-month content calendar that lifted monthly reach by 20%+.",
-      "Ran competitor and keyword analysis for blog SEO; managed scheduling and engagement analytics.",
+      "Ran competitor and keyword analysis for blog SEO.",
     ],
   },
   {
@@ -53,9 +53,8 @@ export const experience: ExperienceItem[] = [
     period: "Jun 2024 – Sep 2024",
     kind: "Work",
     points: [
-      "Assessed public policies and institutional programme operations with a data-driven approach to find gaps.",
+      "Analysed public policy and operations data and presented evidence-based recommendations to stakeholders.",
       "Tracked Maharashtra's political and economic trends through structured, ongoing research.",
-      "Turned findings into strategic recommendations for senior stakeholders.",
     ],
   },
 ];
